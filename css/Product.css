@@ -1,0 +1,272 @@
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #333;
+    }
+    header {
+      background: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+    header .logo { 
+      font-size: 1.2rem; 
+      font-weight: 600; 
+      display: flex;
+      align-items: center;
+    }
+    header .logo::before {
+      content: "▼";
+      margin-right: 5px;
+    }
+    header nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    header nav a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+    .login-btn {
+      background: #000;
+      color: #fff;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    .category-tags {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .tag {
+      background: #f0f0f0;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .availability-tag {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 10; /* Ensure it's above the image */
+      background: #f0f0f0;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #b8a835;
+      display: inline-block;
+      margin-top: 0; /* Remove the margin since it's absolutely positioned */
+    }
+    .product-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .image-container {
+      position: relative;
+      width: 100%;
+      max-height: 600px;
+      overflow: hidden;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+    }
+    .product-image {
+      width: auto;
+      max-width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+      display: block;
+      background: linear-gradient(to right, #ffb6c1, #ffde59);
+    }
+    .next-arrow {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.7);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .product-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .info-section {
+      flex: 1;
+      min-width: 250px;
+    }
+    .info-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    .fabric-tag {
+      background: #f0f0f0;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .color-tag {
+      background: #f0f0f0;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .color-option {
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .sizes, .prices {
+      margin-top: 2rem;
+    }
+    .sizes-header, .prices-header {
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .size-options {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .size-tag {
+      background: #f0f0f0;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .price-tag {
+      background: #f0f0f0;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .discount {
+      color: #ff3a3a;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .mrp {
+      color: #888;
+      text-decoration: line-through;
+      margin-left: 0.5rem;
+    }
+    .related-section {
+      margin-top: 3rem;
+    }
+    .related-title {
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .related-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .related-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    .related-card-info {
+      padding: 1rem;
+      font-size: 0.85rem;
+    }
+    footer {
+      background: #000;
+      color: #fff;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .footer-logo {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .footer-text {
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-icon {
+      width: 30px;
+      height: 30px;
+      background: #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .footer-column h4 {
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 0.7rem;
+    }
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+    @media (max-width: 768px) {
+      .product-info {
+        flex-direction: column;
+      }
+      .color-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }

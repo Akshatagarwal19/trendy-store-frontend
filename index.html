@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="logo-icon">♦</span>
+      <span class="logo-text">Fashion</span>
+    </div>
+    <nav>
+      <a href="#">Languages</a>
+      <a href="#">Category</a>
+      <a href="#">Features</a>
+      <a href="#">Artists</a>
+      <a href="#" class="cart-btn">Cart</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="category-title">T-Shirts</h2>
+    <h3 class="trending-title">New Trendy Designs</h3>
+    
+    <div class="product-grid" id="productGrid"></div>
+    <div class="product-grid" id="productGrid2"></div>
+    <div class="product-grid" id="productGrid3"></div>
+  </main>
+
+  <section class="community-section">
+    <h3>Join Shopping Community to Get Monthly Promo</h3>
+    <p>Type your email down below and be part of our amazing community, you'll thank later</p>
+    <div class="email-form">
+      <input type="email" placeholder="Type your email here..." />
+      <button>SEND</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">Fashion</div>
+        <p class="footer-desc">Complete your style with awesome clothes from us.</p>
+        <div class="social-icons">
+          <a href="#"><span>FB</span></a>
+          <a href="#"><span>IG</span></a>
+          <a href="#"><span>TW</span></a>
+          <a href="#"><span>YT</span></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Quick Link</h4>
+        <ul>
+          <li><a href="#">Share Location</a></li>
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const tshirts = [
+      {
+        id: 1,
+        title: "Round-Neck T-Shirts",
+        images: [
+          "assets/RoundNeckTshirt.webp",
+          "assets/RoundNeckTshirt2.webp"
+        ],
+        bgColor: "bg-gray",
+        category: "round-neck"
+      },
+      {
+        id: 2,
+        title: "U-Neck T-Shirts",
+        images:[
+          "assets/UNeckTShirts.webp",
+          "assets/UNeckTShirts2.webp"
+      ],
+        bgColor: "bg-pink",
+        category: "u-neck"
+      },
+      {
+        id: 3,
+        title: "Cotton Shirt",
+        images: [
+          "assets/CottonShirt.webp",
+          "assets/CottonShirt2.webp",
+        ],
+        bgColor: "bg-teal",
+        category: "Shirt"
+      },
+      {
+        id: 4,
+        title: "Polo Hoodie",
+        images: [
+          "assets/BlackHoodie.jpg",
+          "assets/BlackHoodie.jpg"
+        ],
+        bgColor: "bg-purple",
+        category: "polo"
+      }
+    ];
+
+    // Function to create product cards
+    function createProductCards(containerId, products) {
+  const grid = document.getElementById(containerId);
+  products.forEach((product, index) => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    
+    // Get the first image from the images array if it exists, otherwise use the image property
+    const displayImage = product.images ? product.images[0] : product.image;
+    
+    card.innerHTML = `
+      <div class="image-container ${product.bgColor}">
+        <img src="${displayImage}" alt="${product.title}" />
+        <div class="product-info">
+          <div>
+            <h4 class="product-title">${product.title}</h4>
+            <span class="product-explore">Explore Now!</span>
+          </div>
+          <span class="arrow-icon" data-category="${product.category}">→</span>
+        </div>
+      </div>
+    `;
+    
+    // Find the arrow icon element after it's added to the DOM
+    setTimeout(() => {
+      const arrowIcon = card.querySelector('.arrow-icon');
+      arrowIcon.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent the whole card click event from firing
+        const category = arrowIcon.getAttribute('data-category');
+        redirectToProductPage(product);
+      });
+    }, 0);
+    
+    // Make the whole card clickable
+    card.addEventListener('click', () => {
+      redirectToProductPage(product);
+    });
+    
+    grid.appendChild(card);
+  });
+}
+
+// Function to redirect to appropriate product page
+function redirectToProductPage(product) {
+  // Ensure backward compatibility with the images array
+  if (!product.images && product.image) {
+    // If product has only a single image property, convert it to an images array
+    product.images = [product.image];
+  }
+  
+  // Store the selected product in localStorage
+  localStorage.setItem("selectedProduct", JSON.stringify(product));
+  
+  // Redirect to specific category page based on the product
+  window.location.href = `product.html?category=${product.category}`;
+}
+
+// Create product cards for all three rows
+createProductCards("productGrid", tshirts);
+createProductCards("productGrid2", tshirts);
+createProductCards("productGrid3", tshirts);
+  </script>
+</body>
+</html>

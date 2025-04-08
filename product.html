@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/Product.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html">FASHION</a>
+    </div>
+    <nav>
+      <a href="#">CATEGORIES</a>
+      <a href="#">TRENDS</a>
+      <a href="#">FEATURED</a>
+      <a href="#">SPECIALS</a>
+    </nav>
+    <a href="#" class="login-btn">LOGIN</a>
+  </header>
+
+  <main>
+    <div class="category-tags">
+      <div class="tag" id="primaryCategory">T-shirts</div>
+      <div class="tag" id="secondaryCategory">Full Sleeve T-shirts</div>
+    </div>
+
+    <div class="product-details">
+      <div class="image-container">
+        <img id="productImage" src="/api/placeholder/800/500" alt="Product Image" class="product-image">
+        <div class="next-arrow">→</div>
+        <div class="availability-tag">Piece Available</div>
+      </div>
+
+      <div class="product-info">
+        <h2 id="productTitle" class="product-title">Product Name</h2>
+        
+        <div class="info-section">
+          <div class="info-header">
+            <span>Fabric :</span>
+            <span class="fabric-tag">Cotton</span>
+          </div>
+
+          <div class="sizes">
+            <div class="sizes-header">Sizes :</div>
+            <div class="size-options">
+              <div class="size-tag">S</div>
+              <div class="size-tag">M</div>
+              <div class="size-tag">XL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-header">
+            <span>Colors :</span>
+            <span class="color-tag">Grey</span>
+          </div>
+
+          <div class="color-grid">
+            <div class="color-option" data-color="Black" style="background-color: #000;"></div>
+            <div class="color-option" data-color="Dark Gray" style="background-color: #222;"></div>
+            <div class="color-option" data-color="Gray" style="background-color: #444;"></div>
+            <div class="color-option" data-color="Pink" style="background-color: #ff6b6b;"></div>
+            <div class="color-option" data-color="Orange" style="background-color: #ff9f00;"></div>
+            <div class="color-option" data-color="White" style="background-color: #fff; border: 1px solid #ddd;"></div>
+            <div class="color-option" data-color="Green" style="background-color: #4b8;"></div>
+            <div class="color-option" data-color="Red" style="background-color: #c00;"></div>
+            <div class="color-option" data-color="Brown" style="background-color: #a52a2a;"></div>
+            <div class="color-option" data-color="Light Blue" style="background-color: #b0c4de;"></div>
+            <div class="color-option" data-color="Dark Blue" style="background-color: #483d8b;"></div>
+            <div class="color-option" data-color="Purple" style="background-color: #9370db;"></div>
+          </div>
+
+          <div class="prices">
+            <div class="prices-header">Prices :</div>
+            <div class="price-tag">₹850</div>
+            <div class="discount">-30% M.R.P: <span class="mrp">₹1,299</span></div>
+          </div>
+          
+          <button id="addToCartBtn" class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="related-section">
+      <h3 class="related-title">Related Products</h3>
+      <div class="related-grid" id="relatedProducts">
+        <div class="related-card">
+          <img src="assets/BlackHoodie.jpg" alt="Black hoodie">
+          <div class="related-card-info">Hoodie</div>
+        </div>
+        <div class="related-card">
+          <img src="assets/CottonShirt.webp" alt="Cotton Shirt">
+          <div class="related-card-info">Shirt</div>
+        </div>
+        <div class="related-card">
+          <img src="assets/UNeckTShirts.webp" alt="U-Neck T Shirt">
+          <div class="related-card-info">T Shirt</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <div class="footer-logo">FASHION</div>
+        <p class="footer-text">Complete your style with awesome clothes from us.</p>
+        <div class="social-icons">
+          <div class="social-icon">FB</div>
+          <div class="social-icon">TW</div>
+          <div class="social-icon">IG</div>
+          <div class="social-icon">YT</div>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#">Share Location</a></li>
+          <li><a href="#">Orders Tracking</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Terms & conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  // Load product data from localStorage
+  const selectedProduct = JSON.parse(localStorage.getItem("selectedProduct"));
+  let currentImageIndex = 0;
+  
+  if (selectedProduct) {
+    // Handle multiple images if they exist
+    const productImages = selectedProduct.images || [selectedProduct.image || '/api/placeholder/800/500'];
+    
+    // Function to update displayed image
+    function updateDisplayedImage() {
+      document.getElementById('productImage').src = productImages[currentImageIndex];
+      document.getElementById('productImage').alt = selectedProduct.title;
+    }
+    
+    // Initial image display
+    updateDisplayedImage();
+    
+    // Next arrow functionality
+    document.querySelector('.next-arrow').addEventListener('click', function() {
+      currentImageIndex = (currentImageIndex + 1) % productImages.length;
+      updateDisplayedImage();
+    });
+    
+    // Update product title
+    const productTitle = document.getElementById('productTitle');
+    if (productTitle) {
+      productTitle.textContent = selectedProduct.title;
+    }
+    
+    // Update category tags if needed
+    const primaryCategory = document.getElementById('primaryCategory');
+    if (primaryCategory) {
+      primaryCategory.textContent = selectedProduct.category || 'T-shirts';
+    }
+    
+    // Set the URL parameter to match the category
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set('category', selectedProduct.category);
+    window.history.replaceState({}, '', currentUrl);
+  }
+  
+  // Make size tags selectable
+  document.querySelectorAll('.size-tag').forEach(tag => {
+    tag.addEventListener('click', function() {
+      document.querySelectorAll('.size-tag').forEach(t => t.style.background = '#f0f0f0');
+      this.style.background = '#e0e0e0';
+    });
+  });
+  
+  // Make color options selectable
+  document.querySelectorAll('.color-option').forEach(option => {
+    option.addEventListener('click', function() {
+      // Reset all borders
+      document.querySelectorAll('.color-option').forEach(o => {
+        o.style.border = o.style.backgroundColor === 'rgb(255, 255, 255)' ? '1px solid #ddd' : 'none';
+      });
+      
+      // Set selected border
+      this.style.border = '2px solid #000';
+      
+      // Update color tag text
+      document.querySelector('.color-tag').textContent = this.dataset.color || 'Selected';
+    });
+  });
+  
+  // Add to cart button functionality
+  const addToCartBtn = document.getElementById('addToCartBtn');
+  if (addToCartBtn) {
+    addToCartBtn.addEventListener('click', function() {
+      alert('Product added to cart!');
+      // Here you could implement actual cart functionality
+    });
+  }
+  
+  // Make related product cards clickable
+  document.querySelectorAll('.related-card').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function() {
+      // Here you could implement navigation to related product pages
+      window.location.href = "index.html";
+    });
+  });
+});
+  </script>
+</body>
+</html>
